@@ -1,6 +1,6 @@
 {
-    "name": "nunomaduro/skeleton-php",
-    "description": "A skeleton repository for my packages",
+    "name": "brash/websocket-middleware",
+    "description": " A WebSocket Middleware to be used with an HTTP Server",
     "keywords": ["php", "skeleton", "package"],
     "license": "MIT",
     "authors": [
@@ -10,7 +10,10 @@
         }
     ],
     "require": {
-        "php": "^8.3.0"
+        "php": "^8.3.0",
+        "brash/websocket": "^1.0",
+        "monolog/monolog": "^3.8",
+        "react/http": "^1.11"
     },
     "require-dev": {
         "laravel/pint": "^1.18.1",
@@ -22,7 +25,7 @@
     },
     "autoload": {
         "psr-4": {
-            "NunoMaduro\\SkeletonPhp\\": "src/"
+            "Brash\\WebSocketMiddleware\\": "src/"
         }
     },
     "autoload-dev": {
