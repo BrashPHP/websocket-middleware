@@ -16,7 +16,7 @@ it('Should not allow undeclared path', function (): void {
 it('Should forward if not a websocket request', function (): void {
     $sut = createSut([URL]);
     $serverRequest = createRequest();
-    $response = $sut->handle($serverRequest, fn () => new Response);
+    $response = $sut->handle($serverRequest, fn (): \Brash\Websocket\Http\Response => new Response);
     expect($response->getStatusCode())->toBe(200);
 });
 

@@ -5,7 +5,7 @@ namespace Tests;
 use Brash\Websocket\Message\Protocols\ConnectionHandlerInterface;
 use Brash\WebSocketMiddleware\MiddlewareFactory;
 
-it(description: 'Should call connection on open once', closure: function () {
+it(description: 'Should call connection on open once', closure: function (): void {
     $factory = new MiddlewareFactory;
     /**
      * @var ConnectionHandlerInterface|\Mockery\MockInterface

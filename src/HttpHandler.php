@@ -14,6 +14,7 @@ final readonly class HttpHandler
 {
     public function __construct(
         private ConnectionHandshake $handshaker,
+        /** @var string[] */
         private array $paths
     ) {}
 

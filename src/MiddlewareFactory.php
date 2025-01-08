@@ -12,7 +12,6 @@ use Brash\Websocket\Connection\EventSubscriber;
 use Brash\Websocket\Events\Protocols\ListenerProvider;
 use Brash\Websocket\Events\Protocols\PromiseEventDispatcher;
 use Brash\Websocket\Message\Protocols\ConnectionHandlerInterface;
-use Psr\EventDispatcher\ListenerProviderInterface;
 use Psr\Log\LoggerInterface;
 use React\EventLoop\Loop;
 use React\EventLoop\LoopInterface;
@@ -25,6 +24,9 @@ final class MiddlewareFactory
 
     private ?Config $config = null;
 
+    /**
+     * @var string[]
+     */
     private array $paths = [];
 
     public function create(ConnectionHandlerInterface $connectionHandler): WebSocketMiddleware
@@ -77,6 +79,9 @@ final class MiddlewareFactory
         return $this;
     }
 
+    /**
+     * @param  string[]  $paths
+     */
     public function withPaths(array $paths): static
     {
         $this->paths = $paths;
@@ -85,7 +90,7 @@ final class MiddlewareFactory
     }
 
     private function createEventSubscriber(
-        ListenerProviderInterface $listenerProviderInterface,
+        ListenerProvider $listenerProviderInterface,
         Config $config,
         LoopInterface $loop
     ): EventSubscriber {
