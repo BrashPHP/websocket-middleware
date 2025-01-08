@@ -4,10 +4,10 @@ namespace Tests;
 
 use Brash\Websocket\Http\Response;
 
-const URL = "/test";
+const URL = '/test';
 
 it('Should not allow undeclared path', function (): void {
-    $sut = createSut(["forbidden"]);
+    $sut = createSut(['forbidden']);
     $serverRequest = createRequest();
     $response = $sut->handle($serverRequest);
     expect($response->getStatusCode())->toBe(404);
@@ -16,7 +16,7 @@ it('Should not allow undeclared path', function (): void {
 it('Should forward if not a websocket request', function (): void {
     $sut = createSut([URL]);
     $serverRequest = createRequest();
-    $response = $sut->handle($serverRequest, fn() => new Response());
+    $response = $sut->handle($serverRequest, fn () => new Response);
     expect($response->getStatusCode())->toBe(200);
 });
 
@@ -34,5 +34,3 @@ it('Should validate websocket and return 101 if correct request', function (): v
     $response = $sut->handle($serverRequest);
     expect($response->getStatusCode())->toBe(101);
 });
-
-
