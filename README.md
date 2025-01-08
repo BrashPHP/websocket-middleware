@@ -21,7 +21,7 @@ This library provides a WebSocket message broadcasting solution using the [React
 - PHP 8.3 or higher
 - Composer
 - [ReactPHP](https://reactphp.org/)
-- [Brash\Websocket](https://github.com/your-project) library
+- [Brash\Websocket](https://github.com/BrashPHP/websocket) library
 
 ## Installation
 
