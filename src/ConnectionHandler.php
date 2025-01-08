@@ -8,6 +8,7 @@ use Brash\Websocket\Compression\ServerCompressionContext;
 use Brash\Websocket\Config\Config;
 use Brash\Websocket\Connection\Connection;
 use Brash\Websocket\Connection\ConnectionFactory as BrashConnFactory;
+use Brash\Websocket\Events\OnNewConnectionOpenEvent;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\LoggerInterface;
@@ -39,6 +40,8 @@ class ConnectionHandler
 
         $connection->completeHandshake();
         $connection->setCompression($compression);
+
+        $connection->getEventDispatcher()->dispatch(new OnNewConnectionOpenEvent($connection));
 
         return $connection;
     }

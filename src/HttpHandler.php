@@ -15,11 +15,16 @@ final readonly class HttpHandler
     public function __construct(
         private ConnectionHandshake $handshaker,
         private array $paths
-    ) {}
+    ) {
+    }
 
     public function handle(ServerRequestInterface $request, ?callable $next = null): ResponseInterface
     {
-        if ($this->isPathInvalid($request)) {
+        $isNotWebsocketRequest = !$request->hasHeader('Sec-WebSocket-Key') ||
+            !$request->hasHeader('Upgrade') ||
+            strtolower($request->getHeaderLine('Upgrade')) !== 'websocket';
+            
+        if ($this->isPathInvalid($request) || $isNotWebsocketRequest) {
             return $next ? $next($request) : new Response(404);
         }
 
@@ -34,6 +39,6 @@ final readonly class HttpHandler
 
     private function isPathInvalid(ServerRequestInterface $request): bool
     {
-        return $this->paths !== [] && ! in_array($request->getUri()->getPath(), $this->paths, true);
+        return $this->paths !== [] && !in_array($request->getUri()->getPath(), $this->paths, true);
     }
 }
