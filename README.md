@@ -10,10 +10,6 @@ This package provides a PHP React/HTTP WebSocket Middleware.
 
 > **Requires [PHP 8.3+](https://php.net/releases/)**
 
-⚡️ Create your package using [Composer](https://getcomposer.org):
-
-# README for WebSocket Message Broadcasting Library
-
 This library provides a WebSocket message broadcasting solution using the [ReactPHP](https://reactphp.org/) library. It demonstrates how to handle incoming text messages, broadcast messages to other connected clients, and log connection details.
 
 ## Requirements
